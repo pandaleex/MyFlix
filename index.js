@@ -4,6 +4,7 @@ const express = require('express'),
   path = require('path');
 
 
+const app = express();
 
 app.use(morgan('common'));
 
@@ -50,7 +51,6 @@ let topMovies = [
     },
 ];
 
-const app = express();
 const accessLogStream = fs.createWriteStream(path.join(__dirname, 'log.txt'), {flags: 'a'});
 
 app.use(morgan('combined', {stream: accessLogStream}));
