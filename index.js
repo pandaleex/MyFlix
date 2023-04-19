@@ -3,7 +3,6 @@ const express = require('express'),
   fs = require('fs'),
   path = require('path');
 
-
 const app = express();
 
 app.use(morgan('common'));
