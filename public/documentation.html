@@ -3,17 +3,120 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>MyFlix Movie App</title>
+    <title>Documentation</title>
   </head>
 
   <body>
-    <h1>MyFlix Movie List</h1>
+    <h1>MyFlix Documentation</h1>
     <p>
-      The purpose of this project is to have access to information on movies,
-      directors and genres of all the movies that I am interested in. I will be
-      able to make a profile and save the movies that I've watched or want to
-      watch and get information on them.
+      The purpose of this project is to sort information on movies, directors
+      and genres of all the movies that you are interested in. You will be able
+      to make a profile and save the movies that you've watched or want to watch
+      and get information on them.
     </p>
+
+    <table cellspacing="5">
+      <thead>
+        <tr>
+          <th>Business Logic</th>
+          <th>URL</th>
+          <th>HTTP Method</th>
+          <th>Request Body Data Format</th>
+          <th>Response Body Data Format</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Return a list of ALL movies to the user</td>
+          <td>/movies</td>
+          <td>GET</td>
+          <td>None</td>
+          <td>A JSON object holding data about all the movies</td>
+        </tr>
+        <tr>
+          <td>
+            Return data (description, genre, director, image URL, whether it's
+            featured or not) about a single movie by title to the user
+          </td>
+          <td>/movies/:title</td>
+          <td>GET</td>
+          <td>None</td>
+          <td>
+            A JSON object holding data about a single movie, containing
+            description, genre and director.
+          </td>
+        </tr>
+        <tr>
+          <td>
+            Return data about a genre(description) by name/title. (e.g.,
+            "Thriller")
+          </td>
+          <td>/movies/genres/:genreName</td>
+          <td>GET</td>
+          <td>None</td>
+          <td>A JSON object holding data about a genre and it's description</td>
+        </tr>
+        <tr>
+          <td>Return data about a director (name, bio, birth year) by name</td>
+          <td>/movies/directors/:directorName</td>
+          <td>GET</td>
+          <td>None</td>
+          <td>
+            A JSON object holding data about a director, example: {name:"john",
+            born:"12 feb 1997", bio:"..."
+          </td>
+        </tr>
+        <tr>
+          <td>Allow a user to be created</td>
+          <td>/users</td>
+          <td>POST</td>
+          <td>
+            A JSON object holding data about the user to add, example: {name:
+            "", favoriteMovies:[]}
+          </td>
+          <td>
+            A JSON object holding data about the user that was added, including
+            an ID. Example: {id: "", name: "", favouriteMovies:[]}
+          </td>
+        </tr>
+        <tr>
+          <td>Allow users to update their user info (username)</td>
+          <td>/users/:id</td>
+          <td>PUT</td>
+          <td>
+            The name which they want to be updated into, example: {name: "Kate"}
+          </td>
+          <td>A text indicating that the username was updated</td>
+        </tr>
+        <tr>
+          <td>Allow users to add a movie to their list of favourites</td>
+          <td>/users/:id/:movieTitle</td>
+          <td>POST</td>
+          <td>
+            A JSON object holding data about the user to add, example:
+            {movieTitle: ""}
+          </td>
+          <td>A text indication that the movie has been added</td>
+        </tr>
+        <tr>
+          <td>Allow users to remove a movie from their list of favourites</td>
+          <td>/users/:id/:movieTitle</td>
+          <td>DELETE</td>
+          <td>
+            Name of the movie which they want to removie example:
+            {movieTitle:""}
+          </td>
+          <td>A text indication that the movie has been removed</td>
+        </tr>
+        <tr>
+          <td>Allow existing users to deregister</td>
+          <td>/users/:id</td>
+          <td>DELETE</td>
+          <td>None</td>
+          <td>A text indication that the deletion was successful</td>
+        </tr>
+      </tbody>
+    </table>
     <script type="module" src="server.js"></script>
   </body>
 </html>
