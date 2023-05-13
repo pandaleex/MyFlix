@@ -5,7 +5,7 @@ const express = require("express"),
   bodyParser = require("body-parser"),
   uuid = require("uuid");
 
-
+const app = express();
 
 app.use(morgan("common"));
 app.use(bodyParser.json());
@@ -52,10 +52,6 @@ let movies = [
   },
 ];
 
-<<<<<<< Updated upstream
-const app = express();
-const accessLogStream = fs.createWriteStream(path.join(__dirname, 'log.txt'), {flags: 'a'});
-=======
 let users = [
   {
     id: 1,
@@ -73,7 +69,6 @@ let users = [
     favoriteMovies: [],
   },
 ];
->>>>>>> Stashed changes
 
 const accessLogStream = fs.createWriteStream(path.join(__dirname, "log.txt"), {
   flags: "a",
