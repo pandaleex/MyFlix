@@ -35,8 +35,7 @@
         </tr>
         <tr>
           <td>
-            Return data (description, genre, director, image URL, whether it's
-            featured or not) about a single movie by title to the user
+            Return info about a single movie by title to the user
           </td>
           <td>/movies/:title</td>
           <td>GET</td>
@@ -63,7 +62,7 @@
           <td>None</td>
           <td>
             A JSON object holding data about a director, example: {name:"john",
-            born:"12 feb 1997", bio:"..."
+            birth:"1997", death:"2000" bio:"..."
           </td>
         </tr>
         <tr>
@@ -71,26 +70,31 @@
           <td>/users</td>
           <td>POST</td>
           <td>
-            A JSON object holding data about the user to add, example: {name:
-            "", favoriteMovies:[]}
+            A JSON object holding data about the user to add, example: {Username:
+            "john22", Password:"testing", Email:"john@gmail.com", Birthday:"02/03/1989"}
           </td>
           <td>
             A JSON object holding data about the user that was added, including
-            an ID. Example: {id: "", name: "", favouriteMovies:[]}
+            an ID. Example: {"Username": "john22",
+            "Password": "testing",
+            "Email": "john@gmail.com",
+            "Birthday": "1989-02-03T13:00:00.000Z",
+            "FavoriteMovies": [],
+            "_id": "6462145c67a9ae3c67f05a93",}
           </td>
         </tr>
         <tr>
           <td>Allow users to update their user info (username)</td>
-          <td>/users/:id</td>
+          <td>/users/:Username</td>
           <td>PUT</td>
           <td>
-            The name which they want to be updated into, example: {name: "Kate"}
+            Username and info they would like updated.
           </td>
           <td>A text indicating that the username was updated</td>
         </tr>
         <tr>
           <td>Allow users to add a movie to their list of favourites</td>
-          <td>/users/:id/:movieTitle</td>
+          <td>/users/:Username/movies/:MovieID'</td>
           <td>POST</td>
           <td>
             A JSON object holding data about the user to add, example:
@@ -100,7 +104,7 @@
         </tr>
         <tr>
           <td>Allow users to remove a movie from their list of favourites</td>
-          <td>/users/:id/:movieTitle</td>
+          <td>/users/:Username/movies/:MovieID</td>
           <td>DELETE</td>
           <td>
             Name of the movie which they want to removie example:
@@ -110,7 +114,7 @@
         </tr>
         <tr>
           <td>Allow existing users to deregister</td>
-          <td>/users/:id</td>
+          <td>/users/:Username</td>
           <td>DELETE</td>
           <td>None</td>
           <td>A text indication that the deletion was successful</td>
